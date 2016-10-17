@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block body %}
+<h1>Edit the page</h1>
+<form action="/{{page_name}}/update" method="POST">
+  <input type="hidden" name="id" value="{{entry.id}}">
+  <textarea name="edit" rows="20" cols="80">{{entry.page_content}}</textarea>
+  <p>
+    <button type="submit">Submit Edit</button>
+  </p>
+</form>
+{% endblock %}
