@@ -9,7 +9,8 @@ import wiki_linkify
 from wiki_linkify import wiki_linkify
 import os
 
-app = Flask('Visit Tracker')
+tmp_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
+app = Flask('Visit Tracker', template_folder=tmp_dir)
 db = pg.DB(
     dbname=os.environ.get('PG_DBNAME'),
     host=os.environ.get('PG_HOST'),
