@@ -1,12 +1,21 @@
+from dotenv import load_dotenv, find_dotenv
+load_dotenv(find_dotenv())
+
 from flask import Flask, flash, render_template, request, redirect, session
 import pg
 import markdown
 
 import wiki_linkify
 from wiki_linkify import wiki_linkify
+import os
 
 app = Flask('Visit Tracker')
-db = pg.DB(dbname='wiki_db')
+db = pg.DB(
+    dbname=os.environ.get('PG_DBNAME'),
+    host=os.environ.get('PG_HOST'),
+    user=os.environ.get('PG_USERNAME'),
+    passwd=os.environ.get('PG_PASSWORD')
+)
 
 ## count number of times user is accessing site
 # @app.route('/')
